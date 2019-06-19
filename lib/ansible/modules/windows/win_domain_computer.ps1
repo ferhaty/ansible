@@ -102,7 +102,7 @@ Function Set-ConstructedState($initial_state, $desired_state) {
             -Confirm:$False `
             -WhatIf:$check_mode
     } Catch {
-      Fail-Json -obj $result -message "Initial state DN $($initial_state.distinguished_name) does not match desired state DN $($desired_state.distinguished_name). Failed to move the AD object $($desired_state.name) to $($desired_state.ou) OU: $($_.Exception.Message)"
+      Fail-Json -obj $result -message "HashTable size $($desired_state.distinguished_name.count) - Initial state DN $($initial_state.distinguished_name) does not match desired state DN $($desired_state.distinguished_name). Failed to move the AD object $($desired_state.name) to $($desired_state.ou) OU: $($_.Exception.Message)"
     }
   }
   $result.changed = $true
